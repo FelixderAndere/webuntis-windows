@@ -33,7 +33,7 @@ pip install -r requirements.txt
 
 ## Usage
 
-It is recommended to create a file called `credentials.json`.
+It is recommended to create a file called `credentials.json` with your credentials.
 You can create it by using `WebuntisGUI.py` and the login dialog or write it like so:
 ```
 {
@@ -43,6 +43,7 @@ You can create it by using `WebuntisGUI.py` and the login dialog or write it lik
     "password": "PASSWORD"
 }
 ```
+If you save `credentials.json` next to `WebuntisCLI.py`, your credentials stay on your own machine and are only used for logging in to WebUntis.
 
 ### CLI
 
@@ -68,9 +69,11 @@ The Windows executable can be downloaded from the newest release in the GitHub R
 
 This project uses [python-webuntis](https://github.com/python-webuntis/python-webuntis). Thanks to the maintainers for providing the library that makes the WebUntis connection possible.
 
-## Disclaimer about data privacy
+## ⚠️ Disclaimer
+This is an unofficial, independent project and is not affiliated with, endorsed by, or approved by Untis. “Untis” is a trademark of its respective owner and is used here strictly for identification purposes. 
 
-This project has no bad intent of disturbing or harming anyone and does not guarantee for any claims caused by it (see MIT License). 
+This project has no bad intent of disturbing or harming anyone and does not guarantee for any claims caused by it (see MIT License). Users are responsible for compliance with applicable terms and laws.
 The Data it displays is already visible to the logged-in user. It only retrieves timetable information that is in WebUntis and then sorts, groups, and displays that existing data in a more convenient way.
+It is a pure hobby / free-time project built mainly for fun and for use in a school context.
 
-If you save credentials locally in `credentials.json`, they stay on your own machine and are only used for logging in to WebUntis.
+
