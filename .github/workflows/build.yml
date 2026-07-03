@@ -1,0 +1,43 @@
+name: Build and Upload EXE
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pyinstaller
+
+      - name: Build EXE
+        run: |
+          pyinstaller --onefile WebuntisGUI.py --icon=icon.ico --add-data="icon.ico;." --noconsole
+
+      - name: Rename executable
+        shell: pwsh
+        run: |
+          $version = "${{ github.event.release.tag_name }}"
+          Rename-Item "dist/WebuntisGUI.exe" "Webuntis-$version.exe"
+
+      - name: Upload EXE to Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/Webuntis-${{ github.event.release.tag_name }}.exe
