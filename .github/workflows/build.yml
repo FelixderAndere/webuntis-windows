@@ -29,7 +29,7 @@ jobs:
 
       - name: Build EXE
         run: |
-          pyinstaller --onefile WebuntisGUI.py --icon=icon.ico --add-data="icon.ico;." --noconsole
+          pyinstaller --onefile WebuntisGUI.py --icon=icon.ico --version-file version_info.txt --add-data="icon.ico;." --noconsole
 
       - name: Rename executable
         shell: pwsh
